@@ -1,3 +1,5 @@
+<?php header('Content-type: text/plain'); ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
