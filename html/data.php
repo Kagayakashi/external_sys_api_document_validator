@@ -1,5 +1,6 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,11 @@ header('Content-type: text/html; charset=utf-8');
 					<?php
 					foreach( $lang_data as $each_block ){
 						echo '<h5>'.$each_block[0].'</h5>';
-						echo '<span class="h4">'.$each_block[1].'</span><hr>';
+						echo '<span class="h4">';
+                        header('Content-type: text/plain');
+                        echo $each_block[1];
+                        header('Content-type: text/html; charset=utf-8');
+                        echo '</span><hr>';
 					}
 					?>
 					

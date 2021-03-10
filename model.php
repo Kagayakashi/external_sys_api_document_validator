@@ -85,6 +85,7 @@ class Model {
 		// Check if response is not empty
 		// if response have not records, clear response variable
 		$response = $_SESSION['RESPONSE'];
+        
 		$xml = simplexml_load_string( $response );
 		$records = $xml->body->data['records'];
 		
@@ -103,10 +104,17 @@ class Model {
 		$xml = simplexml_load_string($response);
 		$data = $xml->body->data->{'object'}->field;
         
+        $data = (string) $data;
+
         // Два обратных слеша заменить на перенос новой строки
-        //$data = str_replace(array(' \\ '), '<br />', $data['validator_data']);
-		$data = json_decode( $data, true );
-		
+        $data = str_replace(array("\r", "\n"), array('', ''), $data);
+        
+        //echo $data;
+        
+        //die();
+        
+		$data = json_decode($data, true );
+        
 		$_SESSION['OBJECT_DATA'] = $data;
 		
 		return;
@@ -116,6 +124,7 @@ class Model {
 		
 		// check json key names in object data
 		$data = $_SESSION['OBJECT_DATA'];
+        
 		//if( empty( $data ) || !isset( $data ) ){ return 404; }
 		// check for validator key in json
 		$error = 4;
