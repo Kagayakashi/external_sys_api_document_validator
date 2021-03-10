@@ -74,7 +74,7 @@ class Model {
 		
 		$response = curl_exec($ch);
 		curl_close($ch);
-		
+        
 		$_SESSION['RESPONSE'] = $response;
 		
 		return;

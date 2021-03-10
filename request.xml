@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbapi>
 	<header>
-		<interface id="INTERFACE_ID_S" version="4" />
-		<message id="MSG_ID_S" type="3020" created="SESSION_CREATED_S"/>
+		<interface id="INTERFACE_ID_S" version="7" />
+		<message id="MSG_ID_S" ignore_id="yes" type="3020" created="SESSION_CREATED_S"/>
 		<error id="0" />    
-		<auth pwd=open>AUTHDATA_S</auth>
+		<auth pwd="open">AUTHDATA_S</auth>
 	</header>
 	<body>
 		<search>

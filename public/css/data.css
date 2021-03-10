@@ -11,7 +11,7 @@ html {
 body {
 	height:100%;
 	margin:0;
-	background: rgb(230,230,230);
+	background: #9a9a9a;
 }
 
 div.container {
@@ -19,6 +19,7 @@ div.container {
 	flex-direction:column;
 	height:100%;
 	max-width:600px;
+    background: rgb(230,230,230);
 }
 
 /* HEADER */
@@ -194,10 +195,11 @@ nav section.nav div.language ul {
 
 /* MAIN, CONTENT, BODY */
 main{
-	margin-top:275px;
+	margin-top:285px;
 	margin-bottom:30px;
 	width:100%;
 	flex: 1 1 auto;
+    
 }
 	main section.main{
 		max-width:600px;
@@ -213,12 +215,13 @@ h5 {
 	margin: 2px;
 }
 	
-h4 {
+span.h4 {
 	font-size: 14px;
 	font-weight: bold;
 	color: #396ea3;
 	margin: 3px;
-	
+	white-space:pre-wrap;
+    line-height: 1.6;
 }
 	
 	hr {

@@ -47,12 +47,8 @@
 	
 					<?php
 					foreach( $lang_data as $each_block ){
-                        
-                        $tmp = str_replace(' // // ', '<br />', $each_block[1]);
-                        
 						echo '<h5>'.$each_block[0].'</h5>';
-						//echo '<h4>'.$each_block[1].'</h4>';
-                        echo '<h4>'.$tmp.'</h4><hr>';
+						echo '<span class="h4">'.$each_block[1].'</span><hr>';
 					}
 					?>
 					
