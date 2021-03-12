@@ -49,15 +49,37 @@ header('Content-type: text/html; charset=utf-8');
 			<main>
 				<section class="main">
 					<div class="data">
-	
+
 					<?php
 					foreach( $lang_data as $each_block ){
-						echo '<h5>'.$each_block[0].'</h5>';
-						echo '<span class="h4">';
-                        header('Content-type: text/plain');
-                        echo $each_block[1];
-                        header('Content-type: text/html; charset=utf-8');
-                        echo '</span><hr>';
+                        
+                        echo '<h5>'.$each_block[0].'</h5>';
+                        echo '<span class="paragraph">';
+                        
+                        
+                        //preg_match('/(?<=)[^\/\/]*\./', $each_block[1], $matches)
+                        if(strpos($each_block[1], '//')) {
+                            $pieces = explode(' // ', $each_block[1]);
+                            foreach ($pieces as &$value) {
+                                
+                                $first_2_char = substr($value, 0, 5);
+                                
+                                $numeric_class = '';
+                                if(preg_match('/^[0-9]+\./', $first_2_char)) {
+                                    $numeric_class = ' numeric';
+                                }
+                                
+                                echo '<span class="paragraph'.$numeric_class.'">';
+                                echo $value;
+                                echo '</span>';
+                            }
+                        }
+                        else {
+                            echo $each_block[1];
+                        }
+                        
+                        echo '</span>';
+                        echo '<hr>';
 					}
 					?>
 					

@@ -215,14 +215,23 @@ h5 {
 	margin: 2px;
 }
 	
-span.h4 {
+span.paragraph {
 	font-size: 14px;
 	font-weight: bold;
 	color: #396ea3;
-	margin: 3px;
+	margin-bottom: 6px;
+    margin-top: 2px;
 	white-space:pre-wrap;
-    line-height: 1.6;
+    line-height: 1;
+    display: block;
 }
+
+span.numeric {
+	margin-left: 10px;
+    margin-right: 10px;
+    text-align:left;
+}
+
 	
 	hr {
 	width: 60px;
