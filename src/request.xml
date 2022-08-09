@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbapi>
+    <header>
+        <interface id="{INTERFACE_ID}" version="8" />
+        <message id="1" ignore_id="yes" type="3020" created="{CREATED}"/>
+        <error id="0" />
+        <auth pwd="hash">{AUTHDATA}</auth>
+    </header>
+    <body>
+        <search>
+            <field name="{TOKEN_FIELD}" operator="==" value="{TOKEN_VALUE}" />
+        </search>
+        <data limit="1">
+            <field name="{SEARCH_FIELD}"/>
+        </data>
+    </body>
+</sbapi>

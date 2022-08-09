@@ -1,19 +1,10 @@
 <?php
-//echo $_SERVER['PHP_SELF'];
 
-if( !isset( $_SESSION ) ) {
-    // session isn't started
-	// start new session
-    session_start();
-	
-	$_SESSION['START_TIME'] = time();
+require_once '../vendor/autoload.php';
 
-}
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
 
+session_start();
 
-include_once("../controller.php");
-
-$controller = new Controller();
-
-
-?>
+$router = new \Validator\Router;
