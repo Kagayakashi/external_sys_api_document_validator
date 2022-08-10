@@ -18,5 +18,9 @@ var captcha = sliderCaptcha({
         xmlhttp.open("POST", "/", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("captcha=simourg");
+    },
+    setSrc: function () {
+        var number = Math.round(Math.random() * (10 - 1) + 1);
+        return 'img/captcha/' + number + '.jpg';
     }
 });
