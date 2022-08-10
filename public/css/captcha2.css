@@ -29,14 +29,7 @@ body {
   overflow: auto;
 }
 
-.container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
 
-.container {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
 
 .title {
   background: #0080ff;
@@ -84,18 +77,48 @@ main {
   flex: 1 1 45%;
   padding-left: 13px;
   padding-right: 13px;
-  margin-bottom: 70px;
 }
 
 .captcha {
+  margin-top: 3%;
   display: flex;
   flex-direction:column;
+  margin-bottom: 80px;
 }
 
 .captcha .label {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  font-weight: 550;
+  color: #9a9a9a;
+  margin: 2px;
+}
+
+.captcha .label p {
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+#captcha .refreshIcon {
+  color: yellow;
+}
+
+#captcha canvas {
+  border-radius: 10px 10px 0px 0px;
+}
+
+#captcha .sliderContainer {
+  border-radius: 0px 0px 10px 10px;
+}
+
+#captcha .sliderbg {
+  border-radius: 0px 0px 10px 10px;
+}
+
+#captcha .slider {
+  border-radius: 0px 0px 0px 10px;
 }
 
 footer {

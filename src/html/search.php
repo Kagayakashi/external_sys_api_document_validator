@@ -9,7 +9,7 @@ header('Content-type: text/html; charset=utf-8');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Simourg document validator</title>
-        <link rel="stylesheet" href="css/search1.css">
+        <link rel="stylesheet" href="css/search2.css">
     </head>
 
     <body>
@@ -30,7 +30,7 @@ header('Content-type: text/html; charset=utf-8');
                     <form name="token" action="<?php $_SERVER['PHP_SELF']; ?>" method="get">
                         <div class="search-block">
                             <!-- maxlength="10" minlength="10" pattern="[A-Za-z]{2}[0-9]{6}[A-Za-z0-9]{2}" -->
-                            <input placeholder="AB<?php echo date("ymd"); ?>01" type="text" name="token" autocomplete="on" required="required">
+                            <input placeholder="AB<?php echo date("ymd"); ?>01" type="text" name="token" autocomplete="on" required="required" maxlength="20">
                             <button type="submit" name="">
                                 <img src="img/search.svg">
                             </button>
@@ -38,6 +38,8 @@ header('Content-type: text/html; charset=utf-8');
                     </form>
                 </div>
             </main>
+            
+            <div class="bot-del"></div>
 
             <footer>
                 <section class="footer-block">
