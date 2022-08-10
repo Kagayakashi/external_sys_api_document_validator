@@ -16,6 +16,9 @@ header('Content-type: text/html; charset=utf-8');
         <div class="container">
             <header>
                 <section class="title">
+                    <a href="/">
+                        <img src="img/back-arrow.svg" class="main-logo">
+                    </a>
                     <h1>Simourg document validator</h1>
                 </section>
                 <section class="logo">
