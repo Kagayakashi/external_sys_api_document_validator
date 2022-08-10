@@ -12,7 +12,7 @@ header('Content-type: text/html; charset=utf-8');
         <script src="js/longbow.slidercaptcha.min.js"></script>
         <link rel="stylesheet" href="css/fonts/fontawesome-6.1.2.min.css" />
         <link rel="stylesheet" href="css/slidercaptcha.min.css" />
-        <link rel="stylesheet" href="css/captcha.css">
+        <link rel="stylesheet" href="css/captcha1.css">
     </head>
 
     <body>

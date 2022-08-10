@@ -9,7 +9,7 @@ header('Content-type: text/html; charset=utf-8');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Simourg document validator</title>
-        <link rel="stylesheet" href="css/search.css">
+        <link rel="stylesheet" href="css/search1.css">
     </head>
     <body>
     <center>
