@@ -14,10 +14,16 @@ class Request
         // Проверка капчи
         $this->initCaptcha($token, $lang);
 
+        $ip = isset($_SERVER['HTTP_CLIENT_IP']) 
+            ? $_SERVER['HTTP_CLIENT_IP'] 
+            : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) 
+            ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
+            : $_SERVER['REMOTE_ADDR']);
+
         $config['url'] = $_ENV['SBAPI_URL'];
         $config['interface_id'] = hexdec($_ENV['SBAPI_INTERFACE_ID']);
         $config['created'] = '2022-06-30 04:20:00';
-        $config['authdata'] = base64_encode('<authdata msg_id="1" user="'. $_ENV['SBAPI_USER'] .'" password="'. $_ENV['SBAPI_HASH_PASSWORD'] .'" msg_type="3020" user_ip="127.0.0.1"/>');
+        $config['authdata'] = base64_encode('<authdata msg_id="1" user="'. $_ENV['SBAPI_USER'] .'" password="'. $_ENV['SBAPI_HASH_PASSWORD'] .'" msg_type="3020" user_ip="' . $ip . '"/>');
         $config['token_value'] = $token;
         $config['language'] = $lang;
         $config['token_field'] = $_ENV['TOKEN_FIELD'];
