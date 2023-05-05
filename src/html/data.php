@@ -49,11 +49,19 @@ header('Content-type: text/html; charset=utf-8');
                 <div class="data">
 
                 <?php
+                $i = 0;
                 foreach( $lang_data as $each_block ){
+                    $i++;
                     echo '<h5>'.$each_block[0].'</h5>';
-                    echo '<span class="paragraph">';
 
-                    if(strpos($each_block[1], '//')) {
+                    echo '<span class="paragraph">';
+                    $decoded_value = base64_decode($each_block[1]);
+                    $im = imagecreatefromstring($decoded_value);
+
+                    if ($im !== false) {
+                        echo '<img style="max-width: 515px;" src="data:image;base64,' . $each_block[1] . '">';
+                    }
+                    elseif(strpos($each_block[1], '//')) {
                         $pieces = explode(' // ', $each_block[1]);
                         foreach ($pieces as &$value) {
                             $first_2_char = substr($value, 0, 5);
