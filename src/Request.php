@@ -11,25 +11,29 @@ class Request
 
     public function __construct($token, $lang)
     {
-        // Проверка капчи
-        $this->initCaptcha($token, $lang);
-
+        $default = new Config;
+        
         $ip = isset($_SERVER['HTTP_CLIENT_IP']) 
             ? $_SERVER['HTTP_CLIENT_IP'] 
             : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) 
             ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
             : $_SERVER['REMOTE_ADDR']);
 
-        $config['url'] = $_ENV['SBAPI_URL'];
-        $config['interface_id'] = hexdec($_ENV['SBAPI_INTERFACE_ID']);
+        $config['url'] = $default->api_url;
+        $config['interface_id'] = $default->interface_id;
         $config['created'] = '2022-06-30 04:20:00';
-        $config['authdata'] = base64_encode('<authdata msg_id="1" user="'. $_ENV['SBAPI_USER'] .'" password="'. $_ENV['SBAPI_HASH_PASSWORD'] .'" msg_type="3020" user_ip="' . $ip . '"/>');
+        $config['authdata'] = base64_encode('<authdata msg_id="1" user="'. $default->username .'" password="'. $default->user_pwd .'" msg_type="3020" user_ip="' . $ip . '"/>');
         $config['token_value'] = $token;
         $config['language'] = $lang;
-        $config['token_field'] = $_ENV['TOKEN_FIELD'];
-        $config['search_field'] = $_ENV['SEARCH_FIELD'];
+        $config['token_field'] = $default->token_request_field;
+        $config['search_field'] = $default->search_field;
+        $config['timeout'] = $default->timeout;
+        $config['recaptcha'] = $default->recaptcha;
 
         $this->config = $config;
+
+        // Проверка капчи
+        $this->initCaptcha($token, $lang);
     }
 
     public function getSbData()
@@ -38,11 +42,10 @@ class Request
 
         $xmlObject = new XmlFormer();
         $xml = $xmlObject->getSbData($this->config);
-
         $ch = curl_init( $api ); 
         curl_setopt($ch, CURLOPT_URL, $api );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->config['timeout']);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, 
         array('Content-Type: text/xml; charset=utf-8',
@@ -103,10 +106,10 @@ class Request
     private function askCaptcha()
     {
         if($_SESSION["request_counter"] === 1 && !$_SESSION["first_captcha_entered"]) {
-            // Первый раз запросить на второй раз. После этого каждые 5 раз
+            // Первый раз запросить на второй раз. После этого каждые N раз
             $_SESSION["ask_captcha"] = true;
         }
-        elseif($_SESSION["request_counter"] > 0 && $_SESSION["request_counter"] % 5 == 0) {
+        elseif($_SESSION["request_counter"] > 0 && $_SESSION["request_counter"] % $this->config['recaptcha'] == 0) {
             $_SESSION["ask_captcha"] = true;
         }
 

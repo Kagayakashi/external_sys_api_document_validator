@@ -8,7 +8,7 @@ header('Content-type: text/html; charset=utf-8');
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Simourg document validator</title>
+        <title><?= $config->title ?></title>
         <link rel="stylesheet" href="css/search2.css">
     </head>
 
@@ -16,7 +16,7 @@ header('Content-type: text/html; charset=utf-8');
         <div class="container">
             <header>
                 <section class="title">
-                    <h1>Simourg document validator</h1>
+                    <h1><?= $config->title ?></h1>
                 </section>
                 <section class="logo">
                     <img src="img/simourg.svg">

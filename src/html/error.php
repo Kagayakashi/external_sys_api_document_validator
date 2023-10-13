@@ -8,7 +8,7 @@ header('Content-type: text/html; charset=utf-8');
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Simourg document validator</title>
+        <title><?= $config->title ?></title>
         <link rel="stylesheet" href="css/error2.css">
     </head>
 
@@ -19,7 +19,7 @@ header('Content-type: text/html; charset=utf-8');
                     <a href="/">
                         <img src="img/back-arrow.svg" class="main-logo">
                     </a>
-                    <h1>Simourg document validator</h1>
+                    <h1><?= $config->title ?></h1>
                 </section>
                 <section class="logo">
                     <img src="img/simourg.svg">

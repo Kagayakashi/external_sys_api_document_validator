@@ -8,7 +8,7 @@ header('Content-type: text/html; charset=utf-8');
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Simourg document validator</title>
+        <title><?= $config->title ?></title>
         <script src="js/longbow.slidercaptcha.min.js"></script>
         <link rel="stylesheet" href="css/fonts/fontawesome-6.1.2.min.css" />
         <link rel="stylesheet" href="css/slidercaptcha.min.css" />
@@ -22,7 +22,7 @@ header('Content-type: text/html; charset=utf-8');
                     <a href="/">
                         <img src="img/back-arrow.svg" class="main-logo">
                     </a>
-                    <h1>Simourg document validator</h1>
+                    <h1><?= $config->title ?></h1>
                 </section>
                 <section class="logo">
                     <img src="img/simourg.svg">

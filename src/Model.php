@@ -54,6 +54,8 @@ class Model {
     }
     
     public function get_data_html($data, $token, $lang){
+        $config = new Config;
+        
         // prepare pictures
         $pictures = [];
         if( ! empty( $data['validator_pictures'] ) ){
@@ -127,18 +129,21 @@ class Model {
     }
     
     public function get_search_html(){
+        $config = new Config;
         include __DIR__ . '/html/search.php';
         
         return;
     }
 
     public function get_captcha_html(){
+        $config = new Config;
         include __DIR__ . '/html/captcha.php';
         
         return;
     }
     
-    public function get_error_html( $error ){        
+    public function get_error_html( $error ){
+        $config = new Config;        
         //if error = 500, error page with 'something went wrong',
         //else 'document not found'
         if( $error === 500 ){ include __DIR__ . '/html/wrong.php'; }
