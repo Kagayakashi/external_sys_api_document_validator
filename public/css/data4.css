@@ -164,7 +164,8 @@ h5 {
     margin: 2px;
 }
     
-span.paragraph {
+span.paragraph,
+span.paragraph a {
     font-size: 14px;
     font-weight: bold;
     color: #396ea3;
@@ -174,6 +175,12 @@ span.paragraph {
     line-height: 1;
     display: block;
     text-align: center;
+}
+
+span.paragraph a {
+    white-space: nowrap;
+    width: 16px;
+    text-decoration: none;
 }
 
 span.paragraph a div.fileblock {
