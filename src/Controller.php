@@ -6,11 +6,13 @@ use Exception;
 use Validator\Model;
 
 class Controller {
+    private $download;
     private $token;
     private $language;
     private $model;
     
-    public function __construct($token, $language){
+    public function __construct($download, $token, $language){
+        $this->download = $download;
         $this->token = $token;
         $this->language = $language;
         $this->model = new Model();
@@ -28,11 +30,14 @@ class Controller {
 
     public function render()
     {
-        if(empty($this->token)) {
-            $this->model->get_search_html();
+        if(!empty($this->download)) {
+            $this->postFile();
+        }
+        if(! empty($this->token)) {
+            $this->showData();
         }
         else {
-            $this->showData();
+            $this->model->get_search_html();
         }
     }
 
@@ -50,5 +55,22 @@ class Controller {
 
             $this->model->get_error_html($e->getCode()); 
         }        
+    }
+
+    private function postFile() {
+        if (! empty($this->download) && isset($_SESSION['files']) && isset($_SESSION['files'][$this->download])) {
+            $file = $_SESSION['files'][$this->download];
+            
+            // Декодируем base64 в бинарные данные
+            $fileData = base64_decode($file['base64']);
+            
+            // Устанавливаем заголовки для скачивания файла
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment;'); // Здесь указывается имя файла  filename="downloaded_file.ext"
+            
+            // Отправляем бинарные данные файла в выходной поток
+            echo $fileData;
+            exit;
+        }
     }
 }

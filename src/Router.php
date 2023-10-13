@@ -7,6 +7,7 @@ use Validator\Controller;
 class Router
 {
     private $token;
+    private $download;
     private $language;
     private $captcha;
     
@@ -18,9 +19,17 @@ class Router
 
     private function getUriParams()
     {
+        $this->getUriDownload();
         $this->getUriToken();
         $this->getUriLang();
         $this->getCaptcha();
+    }
+
+    private function getUriDownload()
+    {
+        if(isset($_GET["download"])) {
+            $this->download = $_GET["download"];
+        }
     }
 
     private function getUriToken()
@@ -46,7 +55,7 @@ class Router
 
     private function routeToAction()
     {
-        $controller = new Controller($this->token, $this->language);
+        $controller = new Controller($this->download, $this->token, $this->language);
         if($this->captcha) {
             return $controller->captchaCompleted();
         }

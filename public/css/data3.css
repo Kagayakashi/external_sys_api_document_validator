@@ -176,12 +176,27 @@ span.paragraph {
     text-align: center;
 }
 
+span.paragraph a div.fileblock {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+span.paragraph a div.fileblock img.fileformat {
+    width: 16px;
+}
+
+span.paragraph a div.fileblock p.filename {
+    display: inline;
+}
+
 span.numeric {
     margin-left: 10px;
     margin-right: 10px;
     text-align:left;
 }
-
     
 hr {
     width: 60px;

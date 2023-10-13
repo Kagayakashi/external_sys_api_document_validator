@@ -54,6 +54,19 @@ class Model {
     }
     
     public function get_data_html($data, $token, $lang){
+        // prepare pictures
+        $pictures = [];
+        if( ! empty( $data['validator_pictures'] ) ){
+            $pictures = $this->preparePictures( $data['validator_pictures'] );
+        }
+
+        // prepare files
+        $files = [];
+        if( ! empty( $data['validator_files'] ) ){
+            $files = $this->prepareFiles( $data['validator_files'] );
+            $_SESSION['files'] = $files;
+        }
+
         // get all data with language list
         $all_data = $data['validator_data'];
         
@@ -132,5 +145,27 @@ class Model {
         else{ include __DIR__ . '/html/error.php'; }
         
         return;
+    }
+
+    protected function preparePictures( $pictures ){
+        $res = [];
+        foreach ($pictures as $picture) {
+            if( count( $picture ) === 2 ) {
+                $res[$picture[0]] = $picture[1];
+            }
+        }
+        return $res;
+    }
+
+    protected function prepareFiles( $files ){
+        $res = [];
+        foreach ($files as $file) {
+            if( count( $file ) === 3 ) {
+                $res[$file[0]]['base64'] = $file[1];
+                $res[$file[0]]['name'] = $file[2];
+            }
+        }
+
+        return $res;
     }
 }

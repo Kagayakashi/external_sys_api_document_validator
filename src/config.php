@@ -48,20 +48,20 @@ class Config {
 		$this->title = 'Simourg document validator';
 		
 		// System URL address
-		$this->main_url = "http://validate.dev.simourg.com/";
+		$this->main_url = "https://example.com/";
 		
 		//Session timeout
 		$this->timeout = 300;
 		
 		// API URL address
-		$this->api_url = "https://demo-api.simbase.eu";
+		$this->api_url = "https://api.simbase.example.com";
 		
 		// XML API request fields
 		$this->token_request_field = "o_validator_token";
 		$this->search_field = "o_validator_data";
 		
 		// SimBASE API interface ID
-		$this->interface_id = hexdec('D004004');
+		$this->interface_id = hexdec('D000001');
 		
 		// Defining message counter ID 
 		$timestamp = $this->api_user_timestamp(); // execute function
@@ -69,8 +69,8 @@ class Config {
 		$this->msg_id = substr($timestamp_string, - 10); // take last 10 figures and convert to integer
 		
 		// SimBASE API user data
-		$this->username = 'eb.api';
-		$this->user_pwd = 'apitest123';
+		$this->username = 'user.api';
+		$this->user_pwd = 'api.password';
 		
 		// Timestamp of API request
 		$this->created  = $this->api_user_timestamp();

@@ -8,7 +8,7 @@ header('Content-type: text/html; charset=utf-8');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Simourg document validator</title>
-        <link rel="stylesheet" href="css/data2.css">
+        <link rel="stylesheet" href="css/data3.css">
     </head>
 
     <body>
@@ -74,6 +74,49 @@ header('Content-type: text/html; charset=utf-8');
                             echo '<span class="paragraph'.$numeric_class.'">';
                             echo $value;
                             echo '</span>';
+                        }
+                    }
+                    elseif(strpos($each_block[1], 'picture:') === 0) {
+                        $picture_code = substr($each_block[1], 8);
+                        $decoded_value = base64_decode($pictures[$picture_code]);
+                        $im = imagecreatefromstring($decoded_value);
+
+                        if ($im !== false) {
+                            echo '<img style="max-width: 515px;" src="data:image;base64,' . $pictures[$picture_code] . '">';
+                        }
+                        else {
+                            echo $each_block[1];
+                        }
+                    }
+                    elseif(strpos($each_block[1], 'file:') === 0) {
+                        $file_code = substr($each_block[1], 5);
+                        if(isset($files[$file_code]) && isset($files[$file_code]['name'])) {
+                            $point_exploded = explode('.', $files[$file_code]['name']);
+                            switch (strtolower(end($point_exploded))) {
+                                case 'doc':
+                                case 'docx':
+                                case 'pdf':
+                                case 'jpg':
+                                case 'jpeg':
+                                case 'png':
+                                case 'ppt':
+                                case 'pptx':
+                                case 'odt':
+                                case 'txt':
+                                case 'xls':
+                                case 'xlsx':
+                                    $format = strtolower(end($point_exploded));
+                                    break;
+                                default:
+                                    $format = 'none';
+                                    break;
+                            }
+                            $icon = '<span><img class="fileformat" src="/img/files/' . $format . '.png"></span>';
+                            $fname = '<span><p class="filename">' . $files[$file_code]['name'] . '</p></span>';
+                            echo '<a href="?download='. $file_code .'" download="' . $files[$file_code]['name'] . '"><div class="fileblock">' . $icon . $fname . '</div></a>';
+                        }
+                        else {
+                            echo $each_block[1];
                         }
                     }
                     else {
