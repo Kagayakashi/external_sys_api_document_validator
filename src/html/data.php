@@ -9,6 +9,7 @@ header('Content-type: text/html; charset=utf-8');
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title><?= $config->title ?></title>
         <link rel="stylesheet" href="css/data4.css">
+        <link rel="stylesheet" href="custom/custom.css">
     </head>
 
     <body>
@@ -111,7 +112,7 @@ header('Content-type: text/html; charset=utf-8');
                                     $format = 'none';
                                     break;
                             }
-                            $icon = '<span><img class="fileformat" src="/img/files/' . $format . '.png"></span>';
+                            $icon = '<span><img class="fileformat" src="/img/files/' . $format . '.svg"></span>';
                             $fname = '<span><p class="filename">' . $files[$file_code]['name'] . '</p></span>';
                             echo '<a href="?download='. $file_code .'" download="' . $files[$file_code]['name'] . '"><div class="fileblock">' . $icon . $fname . '</div></a>';
                         }

@@ -13,6 +13,7 @@ header('Content-type: text/html; charset=utf-8');
         <link rel="stylesheet" href="css/fonts/fontawesome-6.1.2.min.css" />
         <link rel="stylesheet" href="css/slidercaptcha.min.css" />
         <link rel="stylesheet" href="css/captcha2.css">
+        <link rel="stylesheet" href="custom/custom.css">
     </head>
 
     <body>
