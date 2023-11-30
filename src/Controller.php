@@ -53,7 +53,14 @@ class Controller {
                 return $this->model->get_captcha_html();
             }
 
-            $this->model->get_error_html($e->getCode()); 
+            if(strtolower($this->token) === 'xy12345678') {
+                $this->model->setTestData();
+                $data = $this->model->prepareData();
+                $this->model->get_data_html($data, $this->token, $this->language);
+            }
+            else {
+                $this->model->get_error_html($e->getCode());
+            }
         }        
     }
 

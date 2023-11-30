@@ -8,6 +8,12 @@ use Exception;
 class Model {
     private $response;
 
+    public function setTestData()
+    {
+        $this->response = file_get_contents(__DIR__ . '/response.xml');
+        $this->isDataEmpty();
+    }
+
     public function getDataByToken($token, $lang)
     {
         $request = new Request($token, $lang);
